@@ -7,8 +7,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 
-import torch
+# Without this, torch compiles parts of ModernBERT on the first batch. On a short
+# test run that compile time is far longer than the scoring itself.
+os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
+
+import torch  # noqa: E402  (must come after the env var)
 
 import grammar_scorer.compat  # noqa: F401  (Python 3.14 fix; must come before transformers)
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
