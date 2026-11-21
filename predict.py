@@ -12,6 +12,8 @@ import os
 # Without this, torch compiles parts of ModernBERT on the first batch. On a short
 # test run that compile time is far longer than the scoring itself.
 os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
+# transformers imports TensorFlow too if it is installed, which adds seconds of start-up.
+os.environ.setdefault("USE_TF", "0")
 
 import torch  # noqa: E402  (must come after the env var)
 
