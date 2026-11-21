@@ -61,4 +61,5 @@ All randomness uses a fixed seed (42). Dependency versions are pinned in `requir
 
 ## Licence and attribution
 
-Code is MIT. DaLAJ-GED is © Språkbanken Text (CC BY 4.0). Wikipedia text is CC BY-SA 4.0.
+Code is MIT. DaLAJ-GED is © Språkbanken Text (CC BY 4.0). Wikipedia text is CC BY-SA 4.0, so the published dataset is CC BY-SA 4.0.
+The Hugging Face model and dataset cards are in `hub/`, and `python upload_cards.py` uploads them.
