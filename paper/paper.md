@@ -55,7 +55,15 @@ Training took 23 minutes on the T4.
 - Most clean training text is formal Wikipedia prose. Informal or spoken-style Swedish may be scored lower than it should be.
 - The label scale follows my own error-count scheme, not human ratings. The model ranks texts well (high Spearman), but its absolute scores may not match a human grader's.
 
-TODO: add 1–2 real test examples the model misjudged.
+**Biggest misses on the test set.** Each of these has one error, so the true score is 0.35–0.40, but the model gave all five 0.93–0.95. Every one is a wrong inflected form that is still a real word, or close to one. My corruption rules don't generate most of these error types:
+
+- *Vem* ***ägar*** *den här cykeln?* — strong-verb present tense (äger).
+- *Fåglarna flyttar söderut när dagarna blir* ***mer korta***. — periphrastic instead of inflected comparative (kortare).
+- *…men licensjakt är* ***tillåtit*** *i några län.* — supine instead of participle (tillåten).
+- ***Ringa*** *mig när du är framme.* — infinitive instead of imperative (Ring).
+- *…arbetade i över tio år med den enorma* ***målning***… — missing definite suffix (målningen). This type is covered by my rules, but the long distance from *den* still fooled the model.
+
+The clearest next step is to generate errors from a morphological lexicon such as SALDO. That would cover strong verbs, comparatives, participles and imperatives, instead of relying on suffix heuristics.
 
 ## References
 
